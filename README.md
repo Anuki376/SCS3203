@@ -121,9 +121,8 @@ Open [http://localhost:16686/](http://localhost:16686/) to see the traces. Mind 
 To deploy the demo app on a docker-compose please visit [./deploy](https://github.com/rasika/petstore/tree/master/deploy)
     
 
-## Testing the Application
 
-### Running the test suite
+## Running the test suite
 
 Run the following command in the terminal 
 
@@ -131,7 +130,7 @@ Run the following command in the terminal
     
     
 
-### Running CURL/WGET commands to test the APIs once deployed 
+## Running CURL/WGET commands to test the APIs once deployed 
 
 #### __Pets__
 
