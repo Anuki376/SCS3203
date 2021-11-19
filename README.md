@@ -32,49 +32,93 @@ Run the following command in the terminal
 
 ## 3. How to run a CURL/WGET command to test the APIs once deployed 
 
-#### __Pet__
+#### __Pets__
 
 * __Retrieve all pets__  
 
         curl http://localhost:8080/v1/pets
   
-   This method requires HTTP GET method and returns a list of all pets in JSON format.
+   Returns a list of all pets in JSON format.
    
     
 * __Retrieve pet by ID__
         
-        curl http://localhost:8080/v1/pets/{petId}
+        curl http://localhost:8080/v1/pets/1
    
-   This method returns the details of a particular pet based on the petId required from the client. If a matching pet is found the method will return the pet details in JSON 
-   format with HTTP response code 200. If a pet is not found HTTP response code 404 will be returned.  
+   Returns the details of a particular pet based on the petId provided (as a parameter) with HTTP response code 200. If a pet is not found HTTP response code 404 is returned.  
    
    
 * __Add pet__  
 
-        curl -d '{"petAge":4, "petId":3, "petName": "Bella", "petType": "Horse"}' -H "content-Type : application/json" -X POST http://localhost:8080/v1/pets/add
+        curl -X POST -H "Content-Type: application/json" \
+        -d '{"petAge":4, "petId":3, "petName": "Bella", "petType": "Horse"}' \
+        http://localhost:8080/v1/pets/add
+         
+    Requires the client to POST the pet details in JSON format and returns HTTP response code 201 if a pet is successfully added. Returns response code 409 if a pet with the         same petId already exists.
     
-    This method requires the client to POST the pet details in JSON format. If a pet is successfully added HTTP response code 201 will be returned. If a pet with that Id already     exists HTTP response code 409 will be returned. 
 
 * __Update pet__ 
+        
+        curl -X PUT -H "Content-Type: application/json" \
+        -d '{"petAge":4, "petId":3, "petName": "Coco", "petType": "Horse"}' \
+        http://localhost:8080/v1/pets/update/3
 
-    This method uses the PUT method and requires the client to post the pet details in JSON format alongwith the relevant petId as a parameter. If the pet details are               successfully updated HTTP response code 200 will be returned. If no pet exists for that petId, response code 404 will be returned.
+    Requires the client to provide the updated pet details in JSON format along with the petId as a parameter, and returns HTTP response code 200 if the pet details are             successfully updated. HTTP response code 304 is returned if the update is unsuccessful.
+    
         
 * __Delete pet__ 
-
-    This method uses the DELETE method and requires the client to provide the petId of the pet that should be deleted. If the pet is successfully deleted HTTp response code 200     will be returned and if no pet with a matching petId exists response code 404 will be returned. 
-
+        
+        curl -X DELETE http://localhost:8080/v1/pets/delete/1
+  
+    Deletes a pet based on the petId provided (as a parameter) and returns HTTP response code 200.
+    
 * __Search for pets by name__ 
 
-        curl http://localhost:8080/v1/pets/name/{petName}
+        curl http://localhost:8080/v1/pets/name/Tom 
     
-   This method requires the petName from the client as a parameter. All pets with the matching name will be returned in JSON format with HTTP response code 200.
+    Returns all pets with a matching petName in JSON format with HTTP response code 200 based on the petName provided (as a parameter).
+   
         
 * __Search for pets by age__ 
 
-        curl http://localhost:8080/v1/pets/age/{petAge}
+        curl http://localhost:8080/v1/pets/age/2
 
-   This method requires the petAge from the client as a parameter. All pets of that age will be returned in JSON format with HTTP response code 200.
+    Returns all pets with a matching petName in JSON format with HTTP response code 200 based on the petAge provided (as a parameter).
 
 
+#### __Pet-Types__
 
+* __Retrieve all pet-types__  
+
+        curl http://localhost:8080/v1/pets-types
+  
+   
+    
+* __Retrieve pet-types by ID__
+        
+        curl http://localhost:8080/v1/pets-types/1
+   
+   
+   
+* __Add pet-type__  
+
+        curl -X POST -H "Content-Type: application/json" \
+        -d '{"petTypeName": "Bird"}' \
+        http://localhost:8080/v1/pets-types/add
+         
+      
+
+* __Update pet-type__ 
+        
+        curl -X PUT -H "Content-Type: application/json" \
+        -d '{"petTypeName": "Fish"}' \
+        http://localhost:8080/v1/pets-types/update/4
+
+    
+        
+* __Delete pet-type__ 
+        
+        curl -X DELETE http://localhost:8080/v1/pets-types/delete/4
+  
+   
 
