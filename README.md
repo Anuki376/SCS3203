@@ -14,7 +14,6 @@ This will produce the quarkus-run.jar file in the build/quarkus-app/directory. T
     java -jar build/petstore-runner.jar
 
 It produces the `quarkus-run.jar` file in the `build/quarkus-app/` directory.
-Be aware that it is not an _??ber-jar_ as the dependencies are copied into the `build/quarkus-app/lib/` directory.
 
 To launch the test page, open your browser at the following URL
 
