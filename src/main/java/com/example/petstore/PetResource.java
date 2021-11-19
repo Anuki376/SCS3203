@@ -85,7 +85,10 @@ public class PetResource {
 		}
 	}
 
-
+	@APIResponses(value = {
+			@APIResponse(responseCode = "200", description = "Pet deleted" ),
+			@APIResponse(responseCode = "404", description = "No Pet found for the id."),
+			@APIResponse(responseCode = "304", description = "Deletion unsuccessful"),})
 	//delete pet
 	@DELETE
 	@Path("/delete/{petId}")

@@ -29,7 +29,7 @@ public class PetList {
         pet3.setPetId(3);
         pet3.setPetAge(1);
         pet3.setPetName("Tom");
-        pet3.setPetType("Bird");
+        pet3.setPetType("Horse");
 
         pets.add(pet1);
         pets.add(pet2);

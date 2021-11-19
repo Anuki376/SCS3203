@@ -11,6 +11,7 @@ import static org.hamcrest.Matchers.*;
 @QuarkusTest
 public class PetResourceTest {
 
+
 	@Test
     public void testGetPetsEndpoint() {
         given()
@@ -92,7 +93,7 @@ public class PetResourceTest {
         given()
                 .pathParam("petId", 3)
                 .contentType("application/json")
-                .body("{\"petId\":3,\"petAge\":1, \"petName\":\"Scruffy\", \"petType\":\"Bird\" }")
+                .body("{\"petId\":3,\"petAge\":1, \"petName\":\"Bella\", \"petType\":\"Horse\" }")
                 .when()
                 .put("/v1/pets/update/{petId}")
                 .then()

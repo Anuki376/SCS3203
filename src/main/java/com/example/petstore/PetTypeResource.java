@@ -55,7 +55,7 @@ public class PetTypeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addPetType(PetType newPetType) {
         if(PetTypeList.getInstance().addToArray(newPetType)){
-            return Response.status(Status.CREATED).build();
+            return Response.status(Status.CREATED).type(MediaType.TEXT_PLAIN).entity("Pet Type Added Successfully!").build();
         }else{
             return Response.status(Status.CONFLICT).build();
         }
@@ -77,7 +77,7 @@ public class PetTypeResource {
         petsType.setPetTypeId(petTypeId);
 
         if (PetTypeList.getInstance().updateArray(petsType)) {
-            return Response.status(Status.OK).build();
+            return Response.status(Status.OK).type(MediaType.TEXT_PLAIN).entity("Pet Type Updated Successfully!").build();
         } else {
             return Response.status(Status.NOT_MODIFIED).build();
         }
@@ -93,7 +93,7 @@ public class PetTypeResource {
         }
 
         if (PetTypeList.getInstance().deleteArrayElement(petTypeId)) {
-            return Response.status(Status.OK).build();
+            return Response.status(Status.OK).type(MediaType.TEXT_PLAIN).entity("Pet Type Deleted Successfully!").build();
         } else {
             return Response.status(Status.NOT_MODIFIED).build();
         }
